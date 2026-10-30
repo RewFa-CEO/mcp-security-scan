@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "cloud-tools": {
+      "url": "https://tools.example-corp.com/mcp",
+      "transport": "http"
+    },
+    "local-dash": {
+      "url": "http://127.0.0.1:8443/mcp",
+      "transport": "sse"
+    }
+  }
+}

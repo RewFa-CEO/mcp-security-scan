@@ -1,0 +1,24 @@
+# mcpsec CI — the open-core "CI" tier (see PRO.md).
+# Drop this into any repo that ships an .mcp.json: it runs static MCP triage on every
+# push/PR and uploads SARIF to GitHub Code Scanning. Non-blocking by default (flip
+# `continue-on-error` to fail the build on findings).
+name: mcpsec
+on: [push, pull_request]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Static MCP triage
+        # scan your real config if present, else the bundled sample
+        run: |
+          if [ -f .mcp.json ]; then CONFIG=.mcp.json; else CONFIG=examples/mcp.sample.json; fi
+          python3 -m mcpsec "$CONFIG" --sarif mcpsec.sarif || true
+          cat mcpsec.sarif | head -c 400
+      - name: Upload SARIF to Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: mcpsec.sarif

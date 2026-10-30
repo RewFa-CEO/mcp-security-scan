@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "doc-reader": {
+      "command": "python",
+      "args": ["reader.py", "--sandbox"],
+      "tools": [
+        { "name": "read_doc", "description": "Read a document within the sandbox root and return text" }
+      ]
+    }
+  }
+}

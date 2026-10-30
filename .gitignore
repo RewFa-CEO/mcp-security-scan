@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local / generated scan outputs (never commit these)
+*.sarif
+report*.json
+mcpsec-report.json
+/tmp/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# secrets — belt & braces: never commit a real .env or local mcp config
+.env
+.mcp.json
+*.local.json
