@@ -12,6 +12,10 @@ servers, from a plain config / tools manifest:
 It's a **static triage layer**: it tells you *what to test* (and pre-fills a bug-report
 skeleton). It is not a substitute for dynamic testing — that's the [Pro tier](./PRO.md).
 
+## Demo
+
+![mcpsec in action](docs/demo.gif)
+
 ## Install
 ```bash
 cd mcp-security-scan
